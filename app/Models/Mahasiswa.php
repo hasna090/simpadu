@@ -8,8 +8,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Mahasiswa extends Model
 {
     //
-
     protected $table = 'mahasiswa';
+    protected $primaryKey = 'nim';
+    protected $keyType = 'string';
+
+    protected $fillable = [
+        'nim',
+        'nama',
+        'tanggalLahir',
+        'telp',
+        'email',
+        'password',
+        'foto',
+        'idprodi'
+    ];
 
     public function Prodi(): BelongsTo
     {
