@@ -35,7 +35,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Data Mahasiswa</h3>
                             <div class="card-tools">
-                                <a href="tambahmahasiswa.php" class="btn btn-primary">Tambah</a>
+                                <a href="mahasiswa/create" class="btn btn-primary">Tambah</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -61,13 +61,18 @@
                                             <td>{{ $m->nama }}</td>
                                             <td>{{ $m->tanggalLahir }}</td>
                                             <td>{{ $m->telp }}</td>
-                                            <td>{{ $m->email }}></td>
+                                            <td>{{ $m->email }}</td>
                                             <td>{{ $m->prodi->nama }}</td>
                                             <td>
                                                 <div style="display: flex; gap: 5px">
-                                                    <a class="btn btn-danger" href="deletemahasiswa.php?nim={{ $m->nim }}"
-                                                        onclick="return confirm('Yakin ingin hapus?')">Delete</a>
-                                                    <a class="btn btn-warning" href=" editmahasiswa.php?nim={{ $m->nim }}">Edit</a>
+                                                    <a href="{{ url ("mahasiswa/$m->nim/edit") }}" 
+                                                         class="btn btn-warning" >Edit</a>
+                                                <form action="{{ url ("mahasiswa/$m->nim") }}" method="POST"> 
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger" 
+                                                     onclick="return confirm('Yakin ingin hapus?')">Hapus</button>
+                                                </form>    
                                             </td>
 
                                         </tr>

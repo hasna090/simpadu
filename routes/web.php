@@ -12,4 +12,4 @@ Route::get('/', [DashboardController::class, 'index']);
 //Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 //Route::post('/mahasiswa', [MahasiswaController::class, 'store']);
 //Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
-Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
