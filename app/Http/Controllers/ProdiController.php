@@ -2,65 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prodi;
+
 class ProdiController extends Controller
 {
     public function index()
     {
         // Logic to retrieve and display all Prodi records
-        $prodi = \App\Models\Prodi::all();
-        return view('prodi.index', compact('prodi'));
+        $data = ['nama' => "hasna", 'foto' => 'hasna.jpeg'];
+        $prodi = Prodi::All();
+        return view('prodi.index', compact('data', 'prodi'));
     }
 
     public function create()
     {
         // Logic to show the form for creating a new Prodi record
-        return view('prodi.create');
+        $data = ['nama' => "hasna", 'foto' => 'hasna.jpeg'];
+        return view('prodi.create', compact('data'));
     }
 
     public function store($request)
     {
         // Logic to store a new Prodi record
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'kode' => 'required|string|max:10',
-        ]);
-
-        \App\Models\Prodi::create($request->all());
-        return redirect()->route('prodi.index')->with('success', 'Prodi created successfully.');
+        $validateData = $request->validate(
+            [
+                'nama' => 'required',
+                'kaprodi' => 'required',
+                'jurusan' => 'required|max:100'
+            ],
+        );
+        Prodi::create($validateData);
+        return redirect('/prodi');
     }
-
     public function show($id)
     {
         // Logic to display a specific Prodi record
-        $prodi = \App\Models\Prodi::findOrFail($id);
-        return view('prodi.show', compact('prodi'));
+
     }
 
     public function edit($id)
     {
         // Logic to show the form for editing a specific Prodi record
-        $prodi = \App\Models\Prodi::findOrFail($id);
-        return view('prodi.edit', compact('prodi'));
+
     }
 
     public function update($request, $id)
     {
         // Logic to update a specific Prodi record
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'kode' => 'required|string|max:10',
-        ]);
 
-        $prodi = \App\Models\Prodi::findOrFail($id);
-        $prodi->update($request->all());
-        return redirect()->route('prodi.index')->with('success', 'Prodi updated successfully.');
+
+
+
     }
 
     public function destroy($id)
     {
         // Logic to delete a specific Prodi record
-        $prodi = \App\Models\Prodi::findOrFail($id);
-        $prodi->delete();
-        return redirect()->route('prodi.index')->with('success', 'Prodi deleted successfully.');
+
     }
 }

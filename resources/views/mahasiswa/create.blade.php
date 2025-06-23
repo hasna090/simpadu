@@ -29,7 +29,7 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h3 class="card-title">Data Prodi</h3>
+                    <h3 class="card-title">Data Mahasiswa</h3>
                 </div>
                 <!-- /.card-header -->
                 <form action="{{ url('mahasiswa') }}" method="post" enctype="multipart/form-data">
