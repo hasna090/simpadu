@@ -64,6 +64,12 @@
                                             <td>{{ $m->email }}</td>
                                             <td>{{ $m->prodi->nama }}</td>
                                             <td>
+                                <img src="{{ $m->foto ? asset('storage/' . $m->foto) : asset('img/default.png') }}"
+                                      alt="Foto Mahasiswa"
+                                      width="60"
+                                      class="img-thumbnail">
+                            </td>
+                                            <td>
                                                 <div style="display: flex; gap: 5px">
                                                     <a href="{{ url ("mahasiswa/$m->nim/edit") }}" 
                                                          class="btn btn-warning" >Edit</a>
